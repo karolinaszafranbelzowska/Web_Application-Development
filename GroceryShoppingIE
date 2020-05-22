@@ -55,7 +55,100 @@
 		color: red;
 		text-decoration: none;
 	}
-	
+	.d4{
+		margin-top:3em;
+		width:30em;
+		border:2px solid, #CCCCCC;
+		border-top-color:rgb(46, 112, 11);
+		border-top-style:solid;
+		border-top-width:2px;
+		
+		border-right-color:rgb(46, 112, 11);
+		border-right-style:solid;
+		border-right-width:2px;
+		
+		border-bottom-color:rgb(46, 112, 11);
+		border-bottom-style:solid;
+		border-bottom-width:2px;
+		
+		border-left-color:rgb(46, 112, 11);
+		border-left-style:solid;
+		border-left-width:2px;
+		
+		margin-right: 0px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+		
+		padding-top: 0px;
+		padding-right: 0px;
+		padding-bottom: 0px;
+		padding-left: 0px;
+		
+		display: block;
+		margin-inline-start: 2px;
+		margin-inline-end: 2px;
+		padding-block-start: 0.35em;
+		padding-inline-start: 0.75em;
+		padding-inline-end: 0.75em;
+		padding-block-end: 0.625em;
+		min-inline-size: min-content
+		font-size: 96%;
+		}
+	.container{
+		height:auto;
+		min-height:27em;
+		display:block;
+	}
+	.fieldset label{
+		display:block;
+		float:left;
+		clear:left;
+		width:11em;
+		padding:0.5em;
+			padding-top:0px;
+			padding-right:0.5em;
+			padding-bottom:0px;
+			padding-left:0.5em;
+			font-weight:bold;
+	}
+	.ip{
+		1px solid #777;
+		border-top-color:rgb(119,119,119);
+		border-top-style:solid;
+		border-top-width:1px;
+		
+		border-right-color:rgb(119,119,119);
+		border-right-style:solid;
+		border-right-width:1px;
+		
+		border-bottom-color:rgb(119,119,119);
+		border-bottom-style:solid;
+		border-bottom-width:1px;
+		
+		border-left-color:rgb(119,119,119);
+		border-left-style:solid;
+		border-left-width:1px;
+		
+		width:12em;
+	}
+	.d5{
+		dispaly:block;
+		font-size:35px;
+		width:auto;
+		float:none;
+		}
+	.login-details{
+		text-align:center;
+		}
+	#login{
+		width:52em;
+		margin: 0 auto;
+		margin-top: 0px;
+		margin-right: auto;
+		margin-bottom: 0px;
+		margin-left: auto;
+		text-align:left;
+		}
 	</style>
 </head>
 
@@ -74,22 +167,52 @@
     <a href="AboutUs.html">About Us</a>
     <a href="ContactUs.html">Contact Us</a>
     <a href="LogIn.html">LogIn</a>
-  </div> 
+    </div> 
   
-  <div style="background-color: LimeGreen; margin: 100px;padding:30px; font-size:25px"> 
+    <div style="background-color: LightGreen; margin: 100px;padding:30px; font-size:20px"> 
           
           
-          <h3>Log in</h3>
-          <p>Sign in here:</p>
-          <form>
-            <!--Add the elements for the form-->
-              <b>Email Address:</b> <br>
-              <input id="uname" style="margin-top:3px;margin:3px;height: 30px; width: 250px"/> <br>
-              <b>Password:</b><br>
-              <input id="pword" type="password" style="margin-top:3px;margin:3px;height: 30px;width:250px"/><br>
-              <input id="button" onclick=login() value="Log In" style="margin-left: 400px"> 
-          </form>  
-  </div>
+          <h3>Existing Customers</h3>
+        <div id="signin-content">
+			<script type="text/javascript">
+								cheeckForFrameSet();
+			</script>
+			<div class="login-details">
+				
+				<div id="login">
+				<form>
+					<fieldset class="d4">
+					<div class="container">
+						<h2> 
+							<span class="d5">Sign in here</span>
+						</h2>
+					
+						<p>
+							<label for="loginID">
+								Email address:
+							</label>
+					
+							<input name="loginID" value class="ip" type="text" id="loginID" maxlength="64"></input>
+						</p>
+						<p>
+							<label for="password">
+								Password:
+							</label>
+					
+							<input name="password" value class="ip" type="password" id="password" maxlength="15"></input>
+						</p>
+						<input type="hidden" name="seamlesswebtag" value></input>
+						<p id="sibutton">
+							<input type="image" alt="Sign in" name="confirm-signin" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/sign%20in.gif"></input>
+						</p>
+						
+					</div>
+				</div>		
+          
+				</form> 
+			</div>			
+        </div>
+	</div>
 </body>
 <style>
 </style>
