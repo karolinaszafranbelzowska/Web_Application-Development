@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+ <!-- Document type declaration that identifies this document as the HTML document-->
+<html>
+<!-- The root element which contains all the elements in the document-->
+<head>
+	<meta charset="utf-8">
+	<!-- meta element specifies the character encoding used in this element-->
+	<title>The Grocery Shopping IE</title>
+	<style type = "text/css">
+	body{ 
+		background-color:LimeGreen;
+		}
+	h1{ 
+	   font-family:Georgia, Times, serif;
+	   color: black;
+	   text-align: center;
+	   padding: 60px;
+	   margin:auto;
+	  }
+	.d1 {
+	   background-color:LightGreen;
+	   }
+		
+	</style>
+</head>
+
+<body>
+	<h1 class="d1">Grocery Shopping IE</h1>
+	<div class="d2">
+    <img id="steth" src="https  ", width="250px">
+</body>
+<style>
+</style>
+</html>
+
+
+
+
+	
+	
