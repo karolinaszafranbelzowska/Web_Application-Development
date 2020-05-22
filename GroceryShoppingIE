@@ -17,9 +17,17 @@
 	   padding: 60px;
 	   margin:auto;
 	  }
-	.d1 {
+	.d1{
 	   background-color:LightGreen;
 	   }
+	#photo{
+		float:left;
+         }
+	.d2{
+    padding: 40px;
+    text-align: center;
+    background:PaleGreen;
+    color: navy;
 		
 	</style>
 </head>
@@ -27,7 +35,8 @@
 <body>
 	<h1 class="d1">Grocery Shopping IE</h1>
 	<div class="d2">
-    <img id="steth" src="https  ", width="250px">
+    <img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/337-3377097_fruits-and-vegetables-png-transparent-png.png", width="500px">
+	</div>
 </body>
 <style>
 </style>
