@@ -23,20 +23,73 @@
 	#photo{
 		float:left;
          }
+	#photo1{
+		float:right;
+         }
+	#info{
+        font-family: Georgia, Times, serif;
+		font-size:30px;
+		color: black;
+         }
+	#info2{
+        font-family: Georgia, Times, serif;
+		font-size:30px;
+		color: black;
+         }
+	#info3{
+        font-family: Georgia, Times, serif;
+		font-size:20px;
+		color: black;
+		float: center;
+        }
 	.d2{
-    padding: 40px;
-    text-align: center;
-    background:PaleGreen;
-    color: navy;
-		
+        padding: 40px;
+        text-align: center;
+        background:PaleGreen;
+        }
+	.d3{
+		overflow: hidden;
+		float:left;
+		display:block;
+		padding: 25px 35px;
+		color: red;
+		text-decoration: none;
+	}
+	
 	</style>
 </head>
 
 <body>
 	<h1 class="d1">Grocery Shopping IE</h1>
 	<div class="d2">
-    <img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/337-3377097_fruits-and-vegetables-png-transparent-png.png", width="500px">
+    <img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/vegetables-png.png", width="500px", height="300px">
+	<img id="photo1" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/fruits-png.png", width="400px", height="300px">
+	<p id="info">We are here for you.</p>
+	<p id="info2"> We want the best for you and your family.</p>
+	<p id="info3"> You won't pay more for poducts that matter most to you.</p>
 	</div>
+	
+	<div class="d3">
+	<a href="Groceries.html">Groceries</a>
+    <a href="AboutUs.html">About Us</a>
+    <a href="ContactUs.html">Contact Us</a>
+    <a href="LogIn.html">LogIn</a>
+  </div> 
+  
+  <div style="background-color: LimeGreen; margin: 100px;padding:30px; font-size:25px"> 
+          
+          
+          <h3>Log in</h3>
+          <p>Sign in here:</p>
+          <form>
+            <!--Add the elements for the form-->
+              <b>Email Address:</b> <br>
+              <input id="uname" style="margin-top:3px;margin:3px;height: 30px; width: 250px"/> <br>
+              <b>Password:</b><br>
+              <input id="pword" type="password" style="margin-top:3px;margin:3px;height: 30px;width:250px"/><br>
+              <input id="button" onclick=login() value="Log In" style="margin-left: 400px"> 
+          </form>  
+  </div>
 </body>
 <style>
 </style>
