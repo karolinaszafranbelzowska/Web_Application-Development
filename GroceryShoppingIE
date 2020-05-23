@@ -158,6 +158,10 @@
 		padding-left:8px;
 		mrgin-left:5px;
 		}
+	#gsSignin{
+		float:left;
+		
+	}
 	</style>
 </head>
 
@@ -181,7 +185,7 @@
     <div style="background-color: LightGreen; margin: 100px;padding:30px; font-size:20px"> 
           
           
-          <h3>Existing Customers</h3>
+          <h3>If you want to continue, enter your customer details</h3>
         <div id="signin-content">
 			<script type="text/javascript">
 								cheeckForFrameSet();
@@ -189,7 +193,7 @@
 			<div class="login-details">
 				
 				<div id="login">
-				<form>
+				<form method="post" id="gsSignin">
 					<fieldset class="d4">
 					<div class="container">
 						<h2> 
@@ -219,14 +223,18 @@
 								<a href="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/forget-password.png" onclick="openWindow(this.href+'&popup=1','forgot',700,500,'yes');
 								return false;">Forgotten your password?</a>
 							</li>
-							<li>
-								<a href="htt..." onclick="openWindow(this.href+'&popup=1', 'signinHelp',700,500,'yes');return false;">Do you need a help?</a>
+							<li class="fargotten">
+								<a href="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/help.png" onclick="openWindow(this.href+'&popup=1', 'signinHelp',700,500,'yes');return false;">Do you need help?</a>
 							</li>
 						</ul>
 					</div>
+					</fieldset>
+				</form>
+				<script type="text/javascript">
+					afe("gsSignin");
+				</script>
 				</div>		
           
-				</form> 
 			</div>			
         </div>
 	</div>
