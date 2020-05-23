@@ -51,13 +51,14 @@
 		overflow: hidden;
 		float:left;
 		display:block;
-		padding: 25px 35px;
+		padding: 35px 35px;
 		color: red;
 		text-decoration: none;
 	}
 	.d4{
 		margin-top:30px;
 		width:300px;
+		padding:50px;
 		border:2px solid, #CCCCCC;
 		border-top-color:rgb(46, 112, 11);
 		border-top-style:solid;
@@ -79,24 +80,15 @@
 		margin-bottom: 0px;
 		margin-left: 0px;
 		
-		padding-top: 0px;
-		padding-right: 0px;
-		padding-bottom: 0px;
-		padding-left: 0px;
-		
 		display: block;
 		margin-inline-start: 2px;
 		margin-inline-end: 2px;
-		padding-block-start: 0.35em;
-		padding-inline-start: 0.75em;
-		padding-inline-end: 0.75em;
-		padding-block-end: 0.625em;
 		min-inline-size: min-content
 		font-size: 96%;
 		}
 	.container{
 		height:auto;
-		min-height:27em;
+		min-height:20em;
 		display:block;
 		text-align:left;
 		font-size:90%;
@@ -143,7 +135,9 @@
 		text-align:center;
 		}
 	#login{
-		width:52em;
+		width:102em;
+		height:32em;
+		padding:50px;
 		margin: 0 auto;
 		margin-top: 0px;
 		margin-right: auto;
@@ -151,6 +145,15 @@
 		margin-left: auto;
 		text-align:left;
 		}
+	#sibutton{
+		margin-top:0.75em;
+		margin-right:0px;
+		margin-bottom:0.75em;
+		mergin-left:0px;
+		tex:left;
+		padding:0;
+		font-size:1em;
+	}
 	</style>
 </head>
 
@@ -168,7 +171,7 @@
 	<a href="Groceries.html">Groceries</a>
     <a href="AboutUs.html">About Us</a>
     <a href="ContactUs.html">Contact Us</a>
-    <a href="LogIn.html">LogIn</a>
+    <a href="SignIn.html">SignIn</a>
     </div> 
   
     <div style="background-color: LightGreen; margin: 100px;padding:30px; font-size:20px"> 
@@ -207,7 +210,12 @@
 						<p id="sibutton">
 							<input type="image" alt="Sign in" name="confirm-signin" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/sign-in.png" width="100px", height="50px"></input>
 						</p>
-						
+						<ul>
+							<li class="forgotten">
+								<a href="https:..." onclick="openWindow(this.href+'&popup=1','forgot',700,500,'yes');
+								return false;">Forgotten your password?</a>
+							</li>
+						</ul>
 					</div>
 				</div>		
           
