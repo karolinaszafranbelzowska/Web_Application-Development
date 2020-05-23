@@ -153,7 +153,11 @@
 		tex:left;
 		padding:0;
 		font-size:1em;
-	}
+		}
+	.fargotten{
+		padding-left:8px;
+		mrgin-left:5px;
+		}
 	</style>
 </head>
 
@@ -212,8 +216,11 @@
 						</p>
 						<ul>
 							<li class="forgotten">
-								<a href="https:..." onclick="openWindow(this.href+'&popup=1','forgot',700,500,'yes');
+								<a href="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/forget-password.png" onclick="openWindow(this.href+'&popup=1','forgot',700,500,'yes');
 								return false;">Forgotten your password?</a>
+							</li>
+							<li>
+								<a href="htt..." onclick="openWindow(this.href+'&popup=1', 'signinHelp',700,500,'yes');return false;">Do you need a help?</a>
 							</li>
 						</ul>
 					</div>
