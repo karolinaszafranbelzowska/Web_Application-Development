@@ -10,6 +10,12 @@
 	body{ 
 		background-color:LimeGreen;
 		}
+	#SignIn{
+		
+		font-family:Tahoma, Segoe UI, Verdana, Helvetica, Sans-Serif;
+		height:111px;
+		font-size:75%;
+		}
 	h1{ 
 	   font-family:Georgia, Times, serif;
 	   color: black;
@@ -135,7 +141,7 @@
 		text-align:center;
 		}
 	#login{
-		width:102em;
+		width:100em;
 		height:32em;
 		padding:50px;
 		margin: 0 auto;
@@ -159,13 +165,13 @@
 		mrgin-left:5px;
 		}
 	#gsSignin{
-		float:left;
-		
-	}
+		float:left;	
+		}
+	
 	</style>
 </head>
 
-<body>
+<body id="SignIn">
 	<h1 class="d1">Grocery Shopping IE</h1>
 	<div class="d2">
     <img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/vegetables-png.png", width="500px", height="300px">
@@ -176,6 +182,7 @@
 	</div>
 	
 	<div class="d3">
+	<a href="GroceryShoppingIEHome">Home</a>
 	<a href="Groceries.html">Groceries</a>
     <a href="AboutUs.html">About Us</a>
     <a href="ContactUs.html">Contact Us</a>
@@ -233,14 +240,34 @@
 				<script type="text/javascript">
 					afe("gsSignin");
 				</script>
+				
 				</div>		
-          
 			</div>			
         </div>
 	</div>
 </body>
-<style>
-</style>
+<script>
+function login(){
+  // define the allowed username and password
+  var allowed_user = "belzowskakarolina@gmail.com"
+  var allowed_password = "Srtb1218"
+
+  // store the entered information in variables
+  var log_user = document.getElementById("username").value
+  var log_password = document.getElementById("password").value
+ 
+  // check to see is are the credentials valid
+  if(log_user === allowed_user &&  log_password === allowed_password){
+    // if successful - redirect to the home page
+    window.location.href = "GroceryShoppingIEHome.html";
+  }
+  else{
+    // otherwise print an error message
+    alert("Something went wrong, Try Again!")
+  }
+  
+}
+</script>
 </html>
 
 
