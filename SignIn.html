@@ -5,7 +5,8 @@
 <head>
 	<meta charset="utf-8">
 	<!-- meta element specifies the character encoding used in this element-->
-	<title>The Grocery Shopping IE</title>
+	<meta name="viewport" content="width=device-width, intial-scale=1">
+	<title>Greenhouse Organics</title>
 </head>
 	<style type = "text/css">
 	body{ 
@@ -148,7 +149,7 @@
 		text-align:center;
 		}
 	#login{
-		width:100em;
+		width:50em;
 		height:32em;
 		padding:50px;
 		margin: 0 auto;
@@ -174,7 +175,26 @@
 	#gsSignin{
 		float:left;	
 		}
-	
+	#button {
+		background-color: LimeGreen;
+		border: none;
+		color: white;
+		width:150px;
+		height:60px;
+		margin:2px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		align-self: center;
+		}
+	.footer{
+		padding: 40px;
+		text-align: center;
+		background:PaleGreen;
+		color: black;
+		margin:0;
+		}
 	</style>
 
 
@@ -191,7 +211,7 @@
 	
 	<div class="d3">
 	<a href="GroceryShoppingIEHome.html">Home</a>
-	<a href="Groceries.html">Groceries</a>
+	<a href="Vegetable.html">Vegetable Boxes</a>
     <a href="AboutUs.html">About Us</a>
     <a href="ContactUs.html">Contact Us</a>
     <a href="SignIn.html" class="right">SignIn</a>
@@ -201,6 +221,7 @@
           
           
           <h3>If you want to continue, enter your customer details</h3>
+		  
         <div id="signin-content">
 			<script type="text/javascript">
 								cheeckForFrameSet();
@@ -219,19 +240,25 @@
 							<label for="loginID">
 								Email address:
 							</label>
-					
-							<input name="loginID" value class="ip" type="text" id="loginID" maxlength="64"></input>
+							
+							<input id="uname" style="margin-top:3px;margin:3px;height: 30px; width: 250px"/> <br>
+							
+							
 						</p>
 						<p>
 							<label for="password">
 								Password:
 							</label>
 					
-							<input name="password" value class="ip" type="password" id="password" maxlength="15"></input>
+							<input id="pword" type="password" style="margin-top:3px;margin:3px;height: 30px;width:250px"/><br>
+							
+						
 						</p>
 						<input type="hidden" name="seamlesswebtag" value></input>
 						<p id="sibutton">
-							<input type="image" alt="Sign in" name="confirm-signin" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/sign-in.png" width="100px", height="50px"></input>
+							
+							<input id="button" onclick=login() value="Sign In" style="margin-left: 400px">  
+							
 						</p>
 						<ul>
 							<li class="forgotten">
@@ -252,6 +279,8 @@
 				</div>		
 			</div>			
         </div>
+	</div>
+	<div class="footer">
 	</div>
 </body>
 <script>
