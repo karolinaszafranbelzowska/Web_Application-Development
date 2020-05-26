@@ -1,4 +1,4 @@
-<!-- GroceryShoppingIEHome.html-->
+<!-- Fruits.html-->
 <!DOCTYPE html>
  <!-- Document type declaration that identifies this document as the HTML document-->
 <html>
@@ -147,18 +147,18 @@
 				<div class="side">
 					<!--Add 4 buttons to the side panel, each button calls a different function when clicked-->
 					<h3 style="align-self:centre">Choose a set box</h3>
-					<button id="button" onclick="Vegetables1()">Vegetables-Box1</button><br>
-					<button id="button" onclick="Vegetables2()">Vegetables-box2</button><br>  
-					<button id="button" onclick="Vegetables3()">Vegetables-Box3 </button><br> 
-					<button id="button" onclick="Vegetables4()">Vegetables-Box4 </button><br>
+					<button id="button" onclick="Fruits1()">Fruits-Box1</button><br>
+					<button id="button" onclick="Fruits2()">Fruits-box2</button><br>  
+					<button id="button" onclick="Fruits3()">Fruits-Box3 </button><br> 
+					<button id="button" onclick="Fruits4()">Fruits-Box4 </button><br>
 				</div>
 
 				<div class="main">
 				<!--Add a product card to display a product, the content of this is variable using the DOM-->
 					<div class="card">
-					<h1 id="card_head">Feed the Heroes Box</h1>
-					<p id="card_price"class="price">€19.99</p>
-					<p id="card_desc">1 cabbage, 1kg of potatoes, 0.5kg of carrots, 0.5kg of parsnip, 1 cauliflower, 1 red cabbage, 1 broccoli, 1kg of onions, 0.2kg of beetroots, 1 garlic, >
+					<h1 id="card_head">Fruit Box Large</h1>
+					<p id="card_price"class="price">€18.50</p>
+					<p id="card_desc">Apple LF, apricots, bananas LF, 5 lemons, oranges LF, peaches, 1kg pears </p>
 					</div>  
 				</div>
 			</div>
@@ -172,28 +172,28 @@
 	</body>
 	
 	<script>
-	function Vegetables1(){
+	function Fruits1(){
     
-		document.getElementById("card_head").innerHTML = "Feed for Heroes Box";
-		document.getElementById("card_price").innerHTML = "€19.99";
+		document.getElementById("card_head").innerHTML = "Fruit Box Large";
+		document.getElementById("card_price").innerHTML = "€18.50";
 		}
-	function Vegetables2(){
+	function Fruits2(){
     
-		document.getElementById("card_head").innerHTML = "Big Family Box";
-		document.getElementById("card_price").innerHTML = "€39.99";
-		document.getElementById("card_desc").innerHTML = "1 cabbage, 2kg of potatoes, 2 Aubergine, Beans French 250g, carrots 1kg, parsnip 1kg, Irish beetroots 600g, Celery lpc, Courgette 550g, 2 cucumbers, Garlic bulb2pc, ginger 150g, Irish lettuce lpc, Irish mushrooms 200g, onions 1kg, 2 broccolies, peppers red,green and yellow, spinach 200g, tomatoes vine 400g,";
+		document.getElementById("card_head").innerHTML = "Fruit Box Medium";
+		document.getElementById("card_price").innerHTML = "€13.25";
+		document.getElementById("card_desc").innerHTML = "1kg apples, bananas MF, oranges MF, peaches MF, pears MF, strawberies and pineapple, avocado";
 		}
-	function Vegetables3(){
+	function Fruits3(){
     
-		document.getElementById("card_head").innerHTML = "Party Time Box";
-		document.getElementById("card_price").innerHTML = "€25.00"
-		document.getElementById("card_desc").innerHTML = "Potato croquettes 2x, swet potatoes fries 2x, carrot and parsnip fries 2x, Chilli baby bakes, salt and chilli wedges, Beer battered onion rings, beer battered chips"
+		document.getElementById("card_head").innerHTML = "Gift Basket";
+		document.getElementById("card_price").innerHTML = "€35.00"
+		document.getElementById("card_desc").innerHTML = "Bananas, apples, pears, oranges, lime, lemon, red and white grapes, blackberries, strawberies, rasberies, blueberries, mango, pineapple, dates, peaches, clementines, plums and Gala melon and small jar of raw honey"
 		}  
-	function Vegetables4(){
+	function Fruits4(){
    
-		document.getElementById("card_head").innerHTML = "Easy Meals Vegetable Box";
-		document.getElementById("card_price").innerHTML = "€19.99"
-		document.getElementById("card_desc").innerHTML = "1kg carrots, 1 celery, croquettes 2x, 1 cucumber, 1kg onions, 1 pepper red, sweet potatoes 500g, Irish salad mix, Irish tomatoes cherry vine 400g"
+		document.getElementById("card_head").innerHTML = "The Jumbo Fruit Box";
+		document.getElementById("card_price").innerHTML = "€29,99"
+		document.getElementById("card_desc").innerHTML = "1kg bananas, 1kg apples, 1kg pears, oranges LF, 3 limes, 3 lemons, red and white grapes, blackberries, strawberies, rasberies, blueberries, 2 mango, 2 pineapple, 5 peaches, 2 avocado,0.5kg clementines, 0.2kg plums and 2 Gala melons, small watermelon, 1kg grapefruits and large jar of raw honey"
 		}  
 	</script>
 	
