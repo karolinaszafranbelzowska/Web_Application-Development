@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<!-- meta element specifies the character encoding used in this element-->
 	<title>The Grocery Shopping IE</title>
+</head>
 	<style type = "text/css">
 	body{ 
 		background-color:LimeGreen;
@@ -56,11 +57,17 @@
 	.d3{
 		overflow: hidden;
 		float:left;
+		}
+	.d3 a{
+		float:left;
 		display:block;
-		padding: 35px 35px;
-		color: red;
-		text-decoration: none;
-	}
+		padding:20px 30px;
+		color:black;
+		text-decoration:none;
+		}
+	.d3 a.right{
+		float:right;
+		}
 	.d4{
 		margin-top:30px;
 		width:300px;
@@ -169,10 +176,11 @@
 		}
 	
 	</style>
-</head>
+
 
 <body id="SignIn">
 	<h1 class="d1">Grocery Shopping IE</h1>
+	<!-- div will define a header and it will be styled with CSS -->
 	<div class="d2">
     <img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/vegetables-png.png", width="500px", height="300px">
 	<img id="photo1" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/fruits-png.png", width="400px", height="300px">
@@ -182,11 +190,11 @@
 	</div>
 	
 	<div class="d3">
-	<a href="GroceryShoppingIEHome">Home</a>
+	<a href="GroceryShoppingIEHome.html">Home</a>
 	<a href="Groceries.html">Groceries</a>
     <a href="AboutUs.html">About Us</a>
     <a href="ContactUs.html">Contact Us</a>
-    <a href="SignIn.html">SignIn</a>
+    <a href="SignIn.html" class="right">SignIn</a>
     </div> 
   
     <div style="background-color: LightGreen; margin: 100px;padding:30px; font-size:20px"> 
@@ -248,22 +256,22 @@
 </body>
 <script>
 function login(){
-  // define the allowed username and password
+  
   var allowed_user = "belzowskakarolina@gmail.com"
   var allowed_password = "Srtb1218"
 
-  // store the entered information in variables
-  var log_user = document.getElementById("username").value
-  var log_password = document.getElementById("password").value
+  
+  var log_user = document.getElementById("uname").value
+  var log_password = document.getElementById("pword").value
  
-  // check to see is are the credentials valid
+  
   if(log_user === allowed_user &&  log_password === allowed_password){
-    // if successful - redirect to the home page
+   
     window.location.href = "GroceryShoppingIEHome.html";
   }
   else{
-    // otherwise print an error message
-    alert("Something went wrong, Try Again!")
+    
+    alert("Something went wrong?, Try Again!")
   }
   
 }

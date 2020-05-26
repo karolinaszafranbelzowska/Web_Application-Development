@@ -2,7 +2,201 @@
 <!DOCTYPE html>
  <!-- Document type declaration that identifies this document as the HTML document-->
 <html>
+	<head>
+		<meta charset="utf-8">
+		<!-- meta element specifies the character encoding used in this element-->
+		<title>GroceryShoppingIE</title>
+		<meta name="viewport" content="width=device-width, intial-scale=1">
+	</head>
+	
+	<style>
+	body{ 
+		background-color:LimeGreen;
+		}
+	#SignIn{
+		
+		font-family:Tahoma, Segoe UI, Verdana, Helvetica, Sans-Serif;
+		height:111px;
+		font-size:75%;
+		}
+	h1{ 
+	   font-family:Georgia, Times, serif;
+	   color: black;
+	   text-align: center;
+	   padding: 60px;
+	   margin:auto;
+	  }
+	.d1{
+	   background-color:LightGreen;
+	   }
+	#photo{
+		float:left;
+         }
+	#photo1{
+		float:right;
+         }
+	#info{
+        font-family: Georgia, Times, serif;
+		font-size:30px;
+		color: black;
+         }
+	#info2{
+        font-family: Georgia, Times, serif;
+		font-size:30px;
+		color: black;
+         }
+	#info3{
+        font-family: Georgia, Times, serif;
+		font-size:20px;
+		color: black;
+		float: center;
+        }
+	.d2{
+        padding: 40px;
+        text-align: center;
+        background:PaleGreen;
+        }
+	.d3{
+		overflow: hidden;
+		float:left;
+		}
+	.d3 a{
+		float:left;
+		display:block;
+		padding:20px 30px;
+		color:black;
+		text-decoration:none;
+		}
+	.d3 a.right{
+		float:right;
+		}
+	.row{
+		display: flex;
+		flex-wrap: wrap;
+		margin:0;
+		}
 
+
+	.side{
+		flex: 20%; 
+		background-color: White; 
+		padding: 20px; 
+		}
+
+	.main{
+		flex: 80%; 
+		background-color: white; 
+		padding: 20px; 
+		}
+
+	.card{
+		max-width: 300px;
+		margin: auto;
+		text-align: center;
+		font-family: arial,Arial, Helvetica, sans-serif;
+		}
+	.price{
+		color: black;
+		font-size: 22px;
+		}
+	#button{
+		background-color:LightGreen;
+		color:black;
+		width:150px;
+		height:60px;
+		margin:2px;
+		text-align:center;
+		text-decoration: none;
+		display: inline-block;
+		font-size:16px;
+		align-self:center;
+		border:none;
+		}
+	 .footer{
+		padding: 40px;
+		text-align: center;
+		background:PaleGreen;
+		color: black;
+		margin:0;
+		}
+	
+	</style>
+	<body id="SignIn">
+		<h1 class="d1">Greenhouse Organics</h1>
+		<!-- div will define a header and it will be styled with CSS -->
+		<div class="d2">
+		<img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/vegetables-png.png", width="500px", height="300px">
+		<img id="photo1" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/fruits-png.png", width="400px", height="300px">
+		<img id="photo" src="", width="400px", height="300px">
+		<p id="info">We are here for you.</p>
+		<p id="info2"> We want the best for you and your family.</p>
+		<p id="info3"> You won't pay more for poducts that matter most to you.</p>
+		</div>
+		
+		<div class="d3">
+			<a href="GroceryShoppingIEHome.html">Home</a>
+			<a href="Vegetable.html">Vegetable Boxes</a>
+			<a href="AboutUs.html">About Us</a>
+			<a href="ContactUs.html">Contact Us</a>
+			<a href="SignIn.html" class="right">SignIn</a>
+		</div> 
+		
+		<p id="main_page">
+			<!--Divide the main body into a side panel and a main panel-->
+			<div class="row">
+				<div class="side">
+					<!--Add 4 buttons to the side panel, each button calls a different function when clicked-->
+					<h3 style="align-self:centre">Choose a set box</h3>
+					<button id="button" onclick="Vegetables1()">Vegetables-Box1</button><br>
+					<button id="button" onclick="Vegetables2()">Vegetables-box2</button><br>  
+					<button id="button" onclick="Vegetables3()">Vegetables-Box3 </button><br> 
+					<button id="button" onclick="Vegetables4()">Vegetables-Box4 </button><br>
+				</div>
+
+				<div class="main">
+				<!--Add a product card to display a product, the content of this is variable using the DOM-->
+					<div class="card">
+					<h1 id="card_head">Feed the Heroes Box</h1>
+					<p id="card_price"class="price">€19.99</p>
+					<p id="card_desc">1 cabbage, 1kg of potatoes, 0.5kg of carrots, 0.5kg of parsnip, 1 cauliflower, 1 red cabbage, 1 broccoli, 1kg of onions, 0.2kg of beetroots, 1 garlic, >
+					</div>  
+				</div>
+			</div>
+  
+		</p>  
+	
+		<div class="footer">
+		</div>
+	
+	
+	</body>
+	
+	<script>
+	function Vegetables1(){
+    // change the styling and content of the service card
+		document.getElementById("card_head").innerHTML = "Feed for Heroes Box";
+		document.getElementById("card_price").innerHTML = "€19.99";
+		}
+	function Vegetables2(){
+    // change the styling and content of the service card
+		document.getElementById("card_head").innerHTML = "Big Family Box";
+		document.getElementById("card_price").innerHTML = "€39.99";
+		document.getElementById("card_desc").innerHTML = "1 cabbage, 2kg of potatoes, 2 Aubergine, Beans French 250g, carrots 1kg, parsnip 1kg, Irish beetroots 600g, Celery lpc, Courgette 550g, 2 cucumbers, Garlic bulb2pc, ginger 150g, Irish lettuce lpc, Irish mushrooms 200g, onions 1kg, 2 broccolies, peppers red,green and yellow, spinach 200g, tomatoes vine 400g,";
+		}
+	function Vegetables3(){
+    // change the styling and content of the service card
+		document.getElementById("card_head").innerHTML = "Party Time Box";
+		document.getElementById("card_price").innerHTML = "€25.00"
+		document.getElementById("card_desc").innerHTML = "Potato croquettes 2x, swet potatoes fries 2x, carrot and parsnip fries 2x, Chilli baby bakes, salt and chilli wedges, Beer battered onion rings, beer battered chips"
+		}  
+	function Vegetables4(){
+    // change the styling and content of the service card
+		document.getElementById("card_head").innerHTML = "Easy Meals Vegetable Box";
+		document.getElementById("card_price").innerHTML = "€19.99"
+		document.getElementById("card_desc").innerHTML = "1kg carrots, 1 celery, croquettes 2x, 1 cucumber, 1kg onions, 1 pepper red, sweet potatoes 500g, Irish salad mix, Irish tomatoes cherry vine 400g"
+		}  
+	</script>
+	
 
 
 
