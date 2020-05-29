@@ -8,15 +8,16 @@
 		<title>The GroceryShoppingIE</title>
 		<meta name="viewport" content="width=device-width, intial-scale=1">
 		
+		<!-- D3.js - JavaScript library will manipulate documents based on data. -->
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 	</head>
 	
-	<style>
+	<style> <!--The style attribute specifies an inline style for an element. The attribute is used with the HTML <body> tag, with the CSS property which describes how HTML elements are to be displayed on screen-->
+	<!-- I used class selectors (".") and  ID selectors ("#"). The difference between an ID and a class is that an ID can be used to identify one element, whereas a class can be used to identify more than one.-->
 	body{ 
-		background-color:LimeGreen;
+		background-color:LimeGreen; 
 		}
 	#SignIn{
-		
 		font-family:Tahoma, Segoe UI, Verdana, Helvetica, Sans-Serif;
 		height:111px;
 		font-size:75%;
@@ -216,8 +217,8 @@
 		cursor: pointer;
 		}
 	</style>
-	<body id="SignIn">
-		<h1 class="d1">Greenhouse Organics</h1>
+	<body id="SignIn"> <!-- <body> tag defines the main content of the HTML document -->
+		<h1 class="d1">The Greenhouse Organics</h1>
 		<!-- div will define a header and it will be styled with CSS -->
 		<div class="d2">
 		<img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/vegetables-png.png", width="500px", height="290px">
@@ -228,7 +229,7 @@
 		</div>
 		
 		<div class="d3">
-		<!-- https://www.w3schools.com/cssref/tryit.asp?filename=trycss_float5 -->
+		<!-- The href attribute specifies the URL of the page the link goes to.-->
 			<a href="Vegetables.html">Vegetable Boxes</a>
 			<a href="Fruits.html">Fruit Boxes</a>
 			<a href="AboutUs.html">About Us</a>
@@ -303,9 +304,9 @@
 						<label for="loginID" class="label left">
 						Is this query regarding an order you have already placed?
 						</label>
-							
+						<!-- Type = "radio" buttons let a user select only one of a limited number of choices, here - yes or no-->	
 						<input class="select" type="radio" name="post" value="yes">
-						yes
+						yes 
 						<input class="select" type="radio" name="post" value="no">
 						no	
 				</p>
@@ -321,8 +322,8 @@
 				</div>
 				
 				<p>
-							
-					<input id="button" type="submit" onclick="submission()" value="Send form" style="margin-left: 400px">  
+					<!-- type = "submit" defines a submit button and "onclick" executes a JavaScript when a button is clicked -->		
+					<input id="button" type="submit" onclick="send()" value="Send form" style="margin-left: 400px">  
 							
 				</p>
 				
@@ -332,13 +333,15 @@
 		
 	</body>
 <script>
-function submission(){
-  // store the information in variables
+<!-- JavaScript function will execute the code -->
+function send(){
+<!-- When function is called, certain value ends up -->
   var first_name = document.getElementById("fname").value
   var last_name = document.getElementById("lname").value
   var email = document.getElementById("email").value
-  //acknowledge the query with an alert
-  alert(Your enquiry has been successfully sent)
+
+<!-- The alert() method displays an alert box-->
+  alert("Your enquiry has been successfully sent")
 }
 </script>
 </html>
