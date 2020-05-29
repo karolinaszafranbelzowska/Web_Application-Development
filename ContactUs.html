@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<!-- meta element specifies the character encoding used in this element-->
-		<title>GroceryShoppingIE</title>
+		<title>The GroceryShoppingIE</title>
 		<meta name="viewport" content="width=device-width, intial-scale=1">
 		
 		<script src="https://d3js.org/d3.v5.min.js"></script>
@@ -114,27 +114,113 @@
 		align-self:center;
 		border:none;
 		}
-	 .footer{
+	.footer{
 		padding: 40px;
 		text-align: center;
 		background:PaleGreen;
 		color: black;
 		margin:0;
 		}
-	  .center {
+	.center {
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
 		font-size: 12px;
 		text-align: center;
 		}
-	
+	#content{
+		width: 650px;
+		}
+	#form{
+		background-color: LightGreen;
+		-webkit-border-radius: 10px;
+		padding-left: 30px;
+		padding-top: 10px;
+		padding-bottom: 20px;
+		float: left;
+		width: 620px;
+		}
+	.section{
+		clear:both;
+		}
+	.line{
+		height:25px;
+		}
+	.label{
+		width:150px;
+		font-weight: bold;
+		font-size: 12px;
+		height: 20px;
+		padding-top: 5px;
+		}
+	.left{
+		float:left;
+		}
+	.section_input{
+		}
+	#title_options{
+		width: 148px;
+		margin-left: 2px;
+		height:20px;
+		}
+	.error{
+		color: red;
+		font-size: 11px;
+		padding-left: 5px;
+		float: left;
+		height: 20px;
+		padding-top: 5px;
+		font-weight: bold;
+		}
+	.section_header{
+		width: 100%;
+		font-weight:bold;
+		font-size:12px;
+		height:40px;
+		padding-top:50px;
+		}
+	#additional_info{
+		margin-top:5px;
+		}
+	.radio_text{
+		width: 145px;
+		float: left;
+		height: 25px;
+		}
+	#additional_text{
+		width: 480px;
+		height: 65px;
+		font-family: Verdana;
+		float: left;
+		}
+	#submit{
+		font-weight: bold;
+		}
+	.hidden{
+		display:none;
+		}
+	#confirmation{
+		padding-top: 20px;
+		color: gray;
+		font-weight: bold;
+		padding-bottom: 20px;
+		float: left;
+		width: 620px;
+		padding-left: 30px;
+		background-color: LimeGreen;
+		}
+	#close_query{
+		width: 100px;
+		color: gray;
+		font-weight: bold;
+		cursor: pointer;
+		}
 	</style>
 	<body id="SignIn">
 		<h1 class="d1">Greenhouse Organics</h1>
 		<!-- div will define a header and it will be styled with CSS -->
 		<div class="d2">
-		<img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/vegetables-png.png", width="500px", height="300px">
+		<img id="photo" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/vegetables-png.png", width="500px", height="290px">
 		<img id="photo1" src="https://raw.githubusercontent.com/karolinaszafranbelzowska/Web_Application-Development/master/fruits-png.png", width="400px", height="300px">
 		<p id="info">We are here for you.</p>
 		<p id="info2"> We want the best for you and your family.</p>
@@ -149,3 +235,110 @@
 			<a href="ContactUs.html">Contact Us</a>
 			<a href="SignIn.html" class="right">SignIn</a>
 		</div> 
+		
+		<div id="content">
+			<div id="headerDirect" style="margin-left:45px;">
+			<br>
+			<br>
+			<b>
+			Please complete
+			<br>
+			and send the form below
+			</b>
+			<br>
+			<div id="title">
+				<h3>Contact Us</h3>
+			</div>
+		</div>
+		<div id="form">
+			<form id="contact">
+				<div class="section line">
+					<div class="label left">
+						Title
+					</div>
+					<div class="section_input left">
+						<select id="title_options" name="title">
+							<option value="XX">please select</option>
+							<option value="Mr">Mr</option>
+							<option value="Mrs">Mrs</option>
+							<option value="Miss">Miss</option> 
+						</select>
+					</div>	
+				</div>
+				
+				<p>
+						<label for="loginID" class="label left">
+								First name:
+						</label>
+							
+						<input id="fname" style="margin-top:3px;margin:3px" required/> <br>		
+				</p>
+				
+				<p>
+						<label for="loginID" class="label left">
+								Surname:
+						</label>
+							
+						<input id="lname" style="margin-top:3px;margin:3px" required/><br>		
+				</p>
+				
+				<p>
+						<label for="loginID" class="label left">
+								Contact phone number:
+						</label>
+							
+						<input id="phone"type="text" style="margin-top:3px;margin:3px" required/><br>		
+				</p>
+				
+				<p>
+						<label for="loginID" class="label left">
+								Email address:
+						</label>
+							
+						<input id="email"type="email" style="margin-top:3px;margin:3px" required/><br>		
+				</p>
+				
+				
+				<p>
+						<label for="loginID" class="label left">
+						Is this query regarding an order you have already placed?
+						</label>
+							
+						<input class="select" type="radio" name="post" value="yes">
+						yes
+						<input class="select" type="radio" name="post" value="no">
+						no	
+				</p>
+				
+				<div id="additional_info">
+					<div class="section_header">
+						Please provide details of your query
+					</div>
+					
+					<div class="section_input">
+						<textarea id="additional_text" name="additional_info"></textarea>
+					</div>
+				</div>
+				
+				<p>
+							
+					<input id="button" type="submit" onclick="submission()" value="Send form" style="margin-left: 400px">  
+							
+				</p>
+				
+			</form>
+			
+		</div>
+		
+	</body>
+<script>
+function submission(){
+  // store the information in variables
+  var first_name = document.getElementById("fname").value
+  var last_name = document.getElementById("lname").value
+  var email = document.getElementById("email").value
+  //acknowledge the query with an alert
+  alert(Your enquiry has been successfully sent)
+}
+</script>
+</html>
