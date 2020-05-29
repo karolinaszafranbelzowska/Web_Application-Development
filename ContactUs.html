@@ -5,9 +5,9 @@
 	<head>
 		<meta charset="utf-8">
 		<!-- meta element specifies the character encoding used in this element-->
-		<title>The GroceryShoppingIE</title>
 		<meta name="viewport" content="width=device-width, intial-scale=1">
-		
+		<!-- set the title of my HTML-->
+		<title>The Greenhouse Organics</title>
 		<!-- D3.js - JavaScript library will manipulate documents based on data. -->
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 	</head>
@@ -17,11 +17,13 @@
 	body{ 
 		background-color:LimeGreen; 
 		}
+	<!-- set the font-family for my SignIn.html -->
 	#SignIn{
 		font-family:Tahoma, Segoe UI, Verdana, Helvetica, Sans-Serif;
 		height:111px;
 		font-size:75%;
 		}
+	<!-- set the font-family, color and other attributes for h1 -->
 	h1{ 
 	   font-family:Georgia, Times, serif;
 	   color: black;
@@ -102,6 +104,7 @@
 		color: black;
 		font-size: 22px;
 		}
+	<!-- define the default styling for the buttons -->
 	#button{
 		background-color:LightGreen;
 		color:black;
@@ -115,6 +118,7 @@
 		align-self:center;
 		border:none;
 		}
+	<!-- define the styling for the footer class -->
 	.footer{
 		padding: 40px;
 		text-align: center;
@@ -336,6 +340,7 @@
 <!-- JavaScript function will execute the code -->
 function send(){
 <!-- When function is called, certain value ends up -->
+<!-- The <var> tag is used to defines a variable in a document -->
   var first_name = document.getElementById("fname").value
   var last_name = document.getElementById("lname").value
   var email = document.getElementById("email").value

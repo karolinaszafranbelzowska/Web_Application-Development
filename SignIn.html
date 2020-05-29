@@ -6,14 +6,15 @@
 	<meta charset="utf-8">
 	<!-- meta element specifies the character encoding used in this element-->
 	<meta name="viewport" content="width=device-width, intial-scale=1">
-	<title>Greenhouse Organics</title>
+	<!-- set the title of my HTML-->
+	<title>The Greenhouse Organics</title>
 </head>
-	<style type = "text/css">
+	<style type = "text/css"> <!--The style attribute specifies an inline style for an element. The attribute is used with the HTML <body> tag, with the CSS property which describes how HTML elements are to be displayed on screen-->
+	<!-- I used class selectors (".") and  ID selectors ("#"). The difference between an ID and a class is that an ID can be used to identify one element, whereas a class can be used to identify more than one.-->
 	body{ 
 		background-color:LimeGreen;
 		}
 	#SignIn{
-		
 		font-family:Tahoma, Segoe UI, Verdana, Helvetica, Sans-Serif;
 		height:111px;
 		font-size:75%;
@@ -210,6 +211,7 @@
 	</div>
 	
 	<div class="d3">
+	<!-- The href attribute specifies the URL of the page the link goes to.-->
 	<a href="Vegetables.html">Vegetable Boxes</a>
 	<a href="Fruits.html">Fruit Boxes</a>
     <a href="AboutUs.html">About Us</a>
@@ -284,8 +286,11 @@
 	</div>
 </body>
 <script>
+<!-- JavaScript function will execute the code -->
 function login(){
   
+  <!-- When function is called, certain value ends up -->
+  <!-- The <var> tag is used to defines a variable in a document -->
   var allowed_user = "belzowskakarolina@gmail.com"
   var allowed_password = "Srtb1218"
 
@@ -293,9 +298,9 @@ function login(){
   var log_user = document.getElementById("uname").value
   var log_password = document.getElementById("pword").value
  
-  
+  <!-- if statement is called to specify a block of code to be executed -->
   if(log_user === allowed_user &&  log_password === allowed_password){
-   
+   <!-- window.location is used to redirect the browser to a new page-->
     window.location.href = "Vegetables.html";
   }
   else{
