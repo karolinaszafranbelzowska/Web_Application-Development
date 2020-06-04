@@ -202,7 +202,7 @@
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
-		font-size: 16px;
+		font-size: 20px;
 		align-self: center;
 		}
 	.footer{
@@ -211,6 +211,18 @@
 		background:PaleGreen;
 		color: black;
 		margin:0;
+		}
+	#ChartSize{
+		background-color: LightGreen;
+		color:black;
+		font-size: 16px;
+		width:150px;
+		height:60px;
+		text-align: center;
+		}
+	#ChartColor{
+		width: 150px;
+		height:60px;
 		}
 	</style>
 
@@ -231,7 +243,7 @@
 		<a href="Vegetables.html">Vegetable Boxes</a>
 		<a href="Fruits.html">Fruit Boxes</a>
 		<a href="AboutUs.html">About Us</a>
-		<a href="Shopping.html">Shopping with Us</a>
+		<a href="Shopping.html">Shopping with Us in 2019</a>
 		<a href="ContactUs.html">Contact Us</a>
 		<a href="SignIn.html" class="right">SignIn</a>
     </div> 
@@ -243,14 +255,14 @@
 			<!--Divide the main body into a side panel and a main panel-->
 			<div class="row">
 				<div class="side">
-					<!--  ...  -->
-					<h3 style="align-self:centre">Average vegetable consumptions</h3><br>
-					<button id="button1" onclick="chart()">2018</button><br>
+					
+					<h3 style="align-self:centre">Average vegetable consumptions for a family of four in 2019</h3><br>
+					<button id="button1" onclick="chart()">2019</button><br>
 					<h3>Select Chart Size</h3>
 					<select id="ChartSize">
+						<option value="400">400px</option>
 						<option value="500">500px</option>
 						<option value="600">600px</option>
-						<option value="700">700px</option>
 					</select><br>
 					
 					<h3> Select Chart Color</h3>
@@ -259,65 +271,123 @@
 
 				<div class="main">
 				<!--Add a product card to display a product, the content of this is variable using the DOM-->
-					<div class="card">
-					<h1 id="card_head">View a graph of Average Vegetable Consumptions</h1>
+					<h2 style="padding:40;text-align:middle">View a graph of Average Vegetable Consumptions in 2019</h2><br>
+					
 					<div id="svgAverage"></div>
-	
-					</div>  
+	 
 				</div>
 			</div>
 		</p> 
+		
+		<div class="footer">
+		</div>
+		
 	</body>
-	
-	<script>
+</html>
+<script>
 function chart(){
+	<!-- Values for Bar Charts -->
 	var height = document.getElementById("ChartSize").value;
+	var width = 400;
+	var xchart = 150;
+	var ychart = 60;
+	var barWidth = 110;
+	var chartColour = document.getElementById("ChartColor").value;
 	
-	var x = 210;
-	var y = 100;
-	var barWidth = 140;
-	var chartColor = document.getElementById("ChartColor").value;
-	var avg_consumption = [0.5,0.8,1.2,1.4,1.8,1.9,2.3,2.5,1.6,1.3,0.9,0.6];
-	var month =["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"]
+	<!-- Scales Data -->
+	var avg_consumption = [15.500,20.800,12.000,14.000];
+	var month =["spring","summer","autumn","winter"];
 	
+	<!-- Create a Scale for Y -->
 	var yScale = d3.scaleLinear()
 		.domain([0,d3.max(avg_consumption)])
 		.range([height,0]);
 		
-	var xScale = d3.scaleBand()
+	<!-- Create a Scale for X -->
+	 var xScale = d3.scaleBand()
 		.domain(month.map(function(d){
-		return d.month;
-		}))
-		.range([0,252]);
+			return d;
+		}))  
+    .range([0,width]);
 	
+	<!--Create a X-Axis -->
 	var xAxis = d3.axisBottom()
 		.scale(xScale);
-		
-	var yAxis = d3.axisLeft()
+	
+	<!-- Creat an Y-Axis -->
+	var yAxis = d3.axisRight()
 		.scale(yScale);
 		
 		
 	d3.select("#svgAverage").selectAll("*").remove();
 	
+	<!-- Create an SVG Container -->
+	var svgContainer = d3.select("#svgAverage").append("svg")
+		.attr("height",(500))
+		.attr("width",800);
 	
-	let svgContainer = d3.select("#svgAverage").append("svg")
-		.attr("width",800)
-		.attr("height",800);
-	
-	let myRectangle = svgContainer.selectAll("rect")
+	<!-- Generate Rectangle for Bar Chart -->
+	var myRectangle = svgContainer.selectAll("rect")
 		.data(avg_consumption);
-	
+		
+	<!-- Add attributes to rectangle -->
 	myRectangle.enter()
 		.append("rect")
-			.attr("x", function(d,i){return x + (i*50);})
+			.attr("x", function(d,i){return xchart + (i*90);})
 			.attr("y", height)
 			.attr("width", barWidth)
-			.attr("fill","yellow")
+			.attr("fill", "yellow")
 			.transition()
 			.duration(3000)
 			
-			.attr("x",
-
+			.attr("x", function(d,i){return xchart + (i*90);})
+			.attr("y",function(d){return yScale(d);})
+			.attr("height",function(d){return height - yScale(d);} )
+			.attr("width", barWidth)
+			.attr("fill", chartColour);
+	
+	<!-- Add Label text for Bar Charts -->
+	let myLabels = svgContainer.selectAll("text")
+		.data(avg_consumption);
+	
+	<!-- Start of Label transition -->
+	myLabels.enter()
+		.append("text")
+		<!-- Start of First Label transition -->
+			.attr("x", function(d,i){return xchart + (barWidth/2) + (i*90);})
+			.attr("y", height)
+			.attr("text-anchor", "middle")
+			.attr("font-size", "15px")
+			.attr("fill", "yellow")
+			.text(function(d){return d + "kg";})  
+			<!-- Transition settings -->
+			.transition()
+			.duration(3000)
+			.delay(3000)
+			.ease(d3.easeBounceOut)
+			
+		<!-- Start of Second Label transition -->
+			.attr("x", function(d,i){return xchart + (barWidth/2) + (i*90);})
+			.attr("y", function(d){return yScale(d) + ychart;})
+			.attr("text-anchor", "middle")
+			.attr("font-size", "15px")
+			.attr("fill", "white")
+			.text(function(d){return d + "kg";}) 
+			
+	svgContainer.append("g")  
+     
+      .attr("transform", "translate(" + (xOffset-10) + ",0)")
+      .call(yAxis);  
+     
+	svgContainer.append("g")
+		.attr("transform", "translate(" + xOffset + "," + height + ")")
+		.call(xAxis)
+		.selectAll("text")
+        .attr("transform", "rotate(60,15)")
+        .attr("text-anchor", "start")
+        .attr("x", "10")
+        .attr("y","3");   
+			
 }
 	
 	
@@ -325,8 +395,6 @@ function chart(){
 	</script>
 	
 	
-	
-	
-  </html>
+
 
   
