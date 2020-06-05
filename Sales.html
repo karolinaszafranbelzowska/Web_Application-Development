@@ -1,7 +1,11 @@
-<!DOCTYPE html>
- <!-- Document type declaration that identifies this document as the HTML document-->
-<html>
-<!-- The root element which contains all the elements in the document-->
+<!DOCYPE html>
+	<!-- Web Application Development - Project, GMIT 2020 -->
+	<!-- Karolina Szafran-Belzowska, G00376368@gmit.ie -->
+	<!-- Lecturer: dr. Michael Duignan -->
+
+	<!-- Vegetable Sales in Ireland -->
+	<!-- Getting Data from cvs file -->
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<!-- meta element specifies the character encoding used in this element-->
@@ -11,7 +15,8 @@
 	<!--Import d3-->
 	<script src="https://d3js.org/d3.v5.min.js"></script> 
 </head>
-	<style type = "text/css"> <!--The style attribute specifies an inline style for an element. The attribute is used with the HTML <body> tag, with the CSS property which describes how HTML elements are to be displayed on screen-->
+<style type = "text/css"> 
+	<!--The style attribute specifies an inline style for an element. The attribute is used with the HTML <body> tag, with the CSS property which describes how HTML elements are to be displayed on screen-->
 	<!-- I used class selectors (".") and  ID selectors ("#"). The difference between an ID and a class is that an ID can be used to identify one element, whereas a class can be used to identify more than one.-->
 	body{ 
 		background-color:LightGreen;
@@ -224,10 +229,8 @@
 		width: 150px;
 		height:60px;
 		}
-	</style>
-
-
-	<body id="SignIn"> <!-- <body> tag defines the main content of the HTML document -->
+</style>
+<body id="SignIn"> <!-- <body> tag defines the main content of the HTML document -->
 		<h1 class="d1">The Grocery Shopping IE</h1>
 		<!-- div will define a header and it will be styled with CSS -->
 		<div class="d2">
@@ -248,8 +251,7 @@
 		<a href="ContactUs.html">Contact Us</a>
 		<a href="SignIn.html" class="right">SignIn</a>
     </div> 
-  
-    <div style="background-color: LightGreen; margin: 100px;padding:30px; font-size:20px"> 
+	<div style="background-color: LightGreen; margin: 100px;padding:30px; font-size:20px"> 
 	</div>
 	
 		<p id="main_page">
@@ -257,145 +259,148 @@
 			<div class="row">
 				<div class="side">
 					
-					<h3 style="align-self:centre">Average vegetable consumptions for a family of four in 2019</h3><br>
-					<button id="button1" onclick="chart()">2019</button><br>
-					<h3>Select Chart Size</h3>
+					<h3 style="align-self:centre">Average vegetable sale for a family of four in 2019</h3><br>
+					<button id="button1" onclick="Sales()">2019</button><br>
+					<h3 style="align-self:centre">Select Chart Size</h3>
 					<select id="ChartSize">
 						<option value="400">400px</option>
 						<option value="500">500px</option>
 						<option value="600">600px</option>
 					</select><br>
 					
-					<h3> Select Chart Color</h3>
+					<h3 style="align-self:centre"> Select Chart Color</h3>
 					<input type="color" id="ChartColor"><br>
 				</div>
 
 				<div class="main">
 				<!--Add a product card to display a product, the content of this is variable using the DOM-->
-					<h2 style="padding:40;text-align:middle">View a graph of Average Vegetable Consumptions in 2019</h2><br>
+					<h2 style="padding:40;text-align:middle">View a graph of Vegetable Sale in 2019</h2><br>
 					
-					<div id="svgAverage"></div>
+					<div id="myDiv"></div>
 	 
 				</div>
 			</div>
 		</p> 
-		
-		<div class="footer">
+	<div class="footer">
 		</div>
-		
-	</body>
 </html>
+
 <script>
-function chart(){
-	<!-- Values for Bar Charts -->
+
+function Sales(){
+
+<!-- Importing csv file with data into d3 -->
+d3.csv("Sales.csv").then(function(data){
+	console.log(data);
+
+<!-- Values for Bar Charts -->
 	var height = document.getElementById("ChartSize").value;
-	var width = 400;
-	var xchart = 150;
-	var ychart = 60;
-	var barWidth = 110;
+	var width = 800;
+	var dataCount = data.length;
+	var gap = 5;
 	var chartColour = document.getElementById("ChartColor").value;
+
+<!-- Convert to numbers as there can be problems with strings -->
+
+
+let svgContainer = d3.select("#myDiv").append("svg")
+	.attr("width",800)
+	.attr("height",800);
+
+// Generate Rectangle for Bar Chart
+
+let myRectangle = svgContainer.selectAll("rect")
+	.data(data);
+
+myRectangle.enter()
+	.append("rect")
 	
-	<!-- Scales Data -->
-	var avg_consumption = [15.500,20.800,12.000,14.000];
-	var month =["spring","summer","autumn","winter"];
-	
-	<!-- Create a Scale for Y -->
-	var yScale = d3.scaleLinear()
-		.domain([0,d3.max(avg_consumption)])
-		.range([height,0]);
+		// Start of transition
 		
-	<!-- Create a Scale for X -->
-	 var xScale = d3.scaleBand()
-		.domain(month.map(function(d){
-			return d;
-		}))  
-    .range([0,width]);
-	
-	<!--Create a X-Axis -->
-	var xAxis = d3.axisBottom()
-		.scale(xScale);
-	
-	<!-- Creat an Y-Axis -->
-	var yAxis = d3.axisRight()
-		.scale(yScale);
+		.attr("fill","black")
+		.attr("x",function(d, i){
+			return 50 + (i*41);
+		})
+		.attr("y",300)
+		.attr("width",40)
+		.transition()
+		.duration(1000)
+		// Finish of transition
 		
-		
-	d3.select("#svgAverage").selectAll("*").remove();
-	
-	<!-- Create an SVG Container -->
-	var svgContainer = d3.select("#svgAverage").append("svg")
-		.attr("height",(500))
-		.attr("width",800);
-	
-	<!-- Generate Rectangle for Bar Chart -->
-	var myRectangle = svgContainer.selectAll("rect")
-		.data(avg_consumption);
-		
-	<!-- Add attributes to rectangle -->
-	myRectangle.enter()
-		.append("rect")
-			.attr("x", function(d,i){return xchart + (i*90);})
-			.attr("y", height)
-			.attr("width", barWidth)
-			.attr("fill", "yellow")
-			.transition()
-			.duration(3000)
-			
-			.attr("x", function(d,i){return xchart + (i*90);})
-			.attr("y",function(d){return yScale(d);})
-			.attr("height",function(d){return height - yScale(d);} )
-			.attr("width", barWidth)
-			.attr("fill", chartColour);
-	
-	<!-- Add Label text for Bar Charts -->
-	let myLabels = svgContainer.selectAll("text")
-		.data(avg_consumption);
-	
-	<!-- Start of Label transition -->
-	myLabels.enter()
+		.attr("x",function(d, i){
+			return 50 + (i*41);
+		})
+		.attr("y", function(d){
+		return 300 - d.Sales * 10;
+		})
+		.attr("height",function(d){
+			return d.temp *10;
+		})
+		.attr("width",40)
+		.attr("fill", function(d){
+			if (d.temp <= 1000) {return "blue";}
+			else if (d.temp <= 1500) {return "green";}
+			else if (d.temp <= 2000) {return "orange";}
+			else {return "red";}
+		});
+
+// Add label text for bar Charts
+
+	let mylabel = svgContainer.selectAll("text")
+		.data(data);
+
+	mylabel.enter()
 		.append("text")
-		<!-- Start of First Label transition -->
-			.attr("x", function(d,i){return xchart + (barWidth/2) + (i*90);})
-			.attr("y", height)
-			.attr("text-anchor", "middle")
-			.attr("font-size", "15px")
-			.attr("fill", "yellow")
-			.text(function(d){return d + "kg";})  
-			<!-- Transition settings -->
+		
+			// Start of FIRST Label Transition
+			.attr("x", function(d, i){
+				return 70 + (i*41);
+			})
+			.attr("y",300)
+			
+			// Transition settings
 			.transition()
 			.duration(3000)
-			.delay(3000)
+			.delay(1000)
 			.ease(d3.easeBounceOut)
+			//Finish of FIRST Label Transition
 			
-		<!-- Start of Second Label transition -->
-			.attr("x", function(d,i){return xchart + (barWidth/2) + (i*90);})
-			.attr("y", function(d){return yScale(d) + ychart;})
+			// Start of SECOND Label Transition 
+			.attr("x",function(d, i){
+				return 70 + (i*41);
+			})
+			.attr("y", function(d){
+			return 320 - d.Sales * 10;
+			})
 			.attr("text-anchor", "middle")
-			.attr("font-size", "15px")
+			.attr("font-family", "sans-serif")
+			.attr("font-size", "20px")
 			.attr("fill", "white")
-			.text(function(d){return d + "kg"}); 
+			.text(function(d){
+				return d.Sales + "kg";
+			})
 			
-	svgContainer.append("g")  
-     
-      .attr("transform", "translate(" + (xOffset-10) + ",0)")
-      .call(yAxis);  
-     
-	svgContainer.append("g")
-		.attr("transform", "translate(" + xOffset + "," + height + ")")
-		.call(xAxis)
-		.selectAll("text")
-        .attr("transform", "rotate(60,15)")
-        .attr("text-anchor", "start")
-        .attr("x", "10")
-        .attr("y","3");   
+			// Transition settings
+			.transition()
+			.duration(3000)
+			.delay(function(d,i){
+				return i * 400;
+			})
+			.ease(d3.easeBounceOut)
+			//Finish of SECOND Label Transition
 			
-}
-	
-	
-	
-	</script>
-	
-	
+			.attr("x",function(d, i){
+				return 70 + (i*41);
+			})
+			.attr("y", 310)
+			.attr("text-anchor", "middle")
+			.attr("font-family", "sans-serif")
+			.attr("font-size", "9px")
+			.attr("fill", "black")
+			.text(function(d){
+				return d.Month;
+			});
 
-
-  
+})
+		
+</script>
