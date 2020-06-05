@@ -197,7 +197,7 @@
 		font-size: 16px;
 		align-self: center;
 		}
-	#button1 {
+	.button1 {
 		background-color: PaleGreen;
 		border: none;
 		color: black;
@@ -229,6 +229,14 @@
 		width: 150px;
 		height:60px;
 		}
+	#myDiv{
+		height:550px;
+		width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		}
 </style>
 <body id="SignIn"> <!-- <body> tag defines the main content of the HTML document -->
 		<h1 class="d1">The Grocery Shopping IE</h1>
@@ -255,152 +263,236 @@
 	</div>
 	
 		<p id="main_page">
+			
 			<!--Divide the main body into a side panel and a main panel-->
 			<div class="row">
 				<div class="side">
 					
-					<h3 style="align-self:centre">Average vegetable sale for a family of four in 2019</h3><br>
-					<button id="button1" onclick="Sales()">2019</button><br>
-					<h3 style="align-self:centre">Select Chart Size</h3>
+					<h3 style="align-self:centre">Compare prices of vegetables and fruits in 2020</h3><br>
+					<button class="button1" onclick="Sales('vegetables','vegetables_price')">Vegetables price</button><br>
+					<button class="button1" onclick="Sales('fruits', 'fruits_price')">Fruits price</button><br>
+					
+					<h3>Select Chart Size</h3>
 					<select id="ChartSize">
 						<option value="400">400px</option>
 						<option value="500">500px</option>
 						<option value="600">600px</option>
 					</select><br>
 					
-					<h3 style="align-self:centre"> Select Chart Color</h3>
+					<h3> Select Chart Color</h3>
 					<input type="color" id="ChartColor"><br>
 				</div>
 
 				<div class="main">
 				<!--Add a product card to display a product, the content of this is variable using the DOM-->
-					<h2 style="padding:40;text-align:middle">View a graph of Vegetable Sale in 2019</h2><br>
+					<h2 style="padding:40;text-align:middle">View a graph of vegetables and fruits prices in 2020</h2><br>
 					
-					<div id="myDiv"></div>
+					<div id="price_area"></div>
 	 
 				</div>
 			</div>
 		</p> 
-	<div class="footer">
+		
+		<div class="footer">
 		</div>
+		
+	</body>
 </html>
+					
 
 <script>
 
-function Sales(){
+function Sales(food_label,price_data) {
+  
+  d3.csv("prices.csv").then(function(data){
+      console.log(data);
 
-<!-- Importing csv file with data into d3 -->
-d3.csv("Sales.csv").then(function(data){
-	console.log(data);
-
-<!-- Values for Bar Charts -->
-	var height = document.getElementById("ChartSize").value;
-	var width = 800;
-	var dataCount = data.length;
-	var gap = 5;
-	var chartColour = document.getElementById("ChartColor").value;
-
-<!-- Convert to numbers as there can be problems with strings -->
+      data.forEach(function (d) {
+        d.Sales = Number(d.Sales); 
+      })
 
 
-let svgContainer = d3.select("#myDiv").append("svg")
-	.attr("width",800)
-	.attr("height",800);
+      // Variables for chart bar values
+      var myHeight = 450;
+      var myWidth = Number(document.getElementById("ChartSize").value); 
+      var dataCount = data.length;
+      var gap = 5;
+      var barThickness = ((myWidth / dataCount) - gap);
+      var leftOffset = 50 + 0.5 * gap; 
+      var chartColour = document.getElementById("ChartColor").value; 
+  
 
-// Generate Rectangle for Bar Chart
+      // declaree a scale for X axis; 
+      var xScale = d3.scaleBand()
+        .domain(data.map(function (d) {
+          return d.Month;
+        }))
+        .range([0, myWidth + (gap * dataCount)]) 
 
-let myRectangle = svgContainer.selectAll("rect")
-	.data(data);
 
-myRectangle.enter()
-	.append("rect")
-	
-		// Start of transition
+      var yScale = d3.scaleLinear()
+        
+        .domain([0, d3.max(data, function (d) {
+          return d.Sales;
+        })])
+      
+        .range([myHeight, 0]) 
+        ; 
 		
-		.attr("fill","black")
-		.attr("x",function(d, i){
-			return 50 + (i*41);
-		})
-		.attr("y",300)
-		.attr("width",40)
-		.transition()
-		.duration(1000)
-		// Finish of transition
-		
-		.attr("x",function(d, i){
-			return 50 + (i*41);
-		})
-		.attr("y", function(d){
-		return 300 - d.Sales * 10;
-		})
-		.attr("height",function(d){
-			return d.temp *10;
-		})
-		.attr("width",40)
-		.attr("fill", function(d){
-			if (d.temp <= 1000) {return "blue";}
-			else if (d.temp <= 1500) {return "green";}
-			else if (d.temp <= 2000) {return "orange";}
-			else {return "red";}
-		});
+      var xAxis = d3.axisBottom()
+        .scale(xScale);
 
-// Add label text for bar Charts
+     
+      var yAxis = d3.axisLeft()
+        .scale(yScale); 
 
-	let mylabel = svgContainer.selectAll("text")
-		.data(data);
 
-	mylabel.enter()
-		.append("text")
-		
-			// Start of FIRST Label Transition
-			.attr("x", function(d, i){
-				return 70 + (i*41);
-			})
-			.attr("y",300)
-			
-			// Transition settings
-			.transition()
-			.duration(3000)
-			.delay(1000)
-			.ease(d3.easeBounceOut)
-			//Finish of FIRST Label Transition
-			
-			// Start of SECOND Label Transition 
-			.attr("x",function(d, i){
-				return 70 + (i*41);
-			})
-			.attr("y", function(d){
-			return 320 - d.Sales * 10;
-			})
-			.attr("text-anchor", "middle")
-			.attr("font-family", "sans-serif")
-			.attr("font-size", "20px")
-			.attr("fill", "white")
-			.text(function(d){
-				return d.Sales + "kg";
-			})
-			
-			// Transition settings
-			.transition()
-			.duration(3000)
-			.delay(function(d,i){
-				return i * 400;
-			})
-			.ease(d3.easeBounceOut)
-			//Finish of SECOND Label Transition
-			
-			.attr("x",function(d, i){
-				return 70 + (i*41);
-			})
-			.attr("y", 310)
-			.attr("text-anchor", "middle")
-			.attr("font-family", "sans-serif")
-			.attr("font-size", "9px")
-			.attr("fill", "black")
-			.text(function(d){
-				return d.Month;
-			});
+      var svgContainer = d3.select("#myDiv").append("svg")
+        .attr("height", myHeight + 60) 
+        .attr("width", (myWidth + 200))
+        .attr("transform", "translate(0, 20)"); 
 
-})
-		
+
+      var myRectangle = svgContainer.selectAll('rect').data(data);
+
+     
+      myRectangle.enter().append("rect")
+
+       
+        .attr("fill", "yellow")
+       
+        .attr("x", function (d, i) {
+          return leftOffset + 0.5 * gap + (i * (myWidth / dataCount + gap)); 
+        }) 
+        .attr("y", myHeight)
+        .attr("width", barThickness)
+
+        .transition()
+        .duration(2000 * speedFactor)
+        
+        .attr("y", function (d, i) {
+          return yScale(d.Sales) 
+        })
+        
+        .attr("height", function (d) {
+          return myHeight - yScale(d.Sales);
+        })
+        .attr("fill", chartColour);
+
+
+      var mylabel = svgContainer.selectAll('text').data(data);
+
+      mylabel.enter().append("text")
+
+       
+        .attr("text-anchor", "middle")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "1px")
+        .attr("fill", chartColour)
+        .attr("x", function (d, i) {
+          return (leftOffset + 0.5 * gap + 0.5 * barThickness) + (i * (myWidth / dataCount + gap) - 1); 
+        }) 
+        .attr("y", 450)
+
+        
+        .transition()
+        .duration(3000)
+        .delay(function (d, i) {
+          return 1400 * speedFactor + (0 * 450); 
+        })
+        .attr("font-size", "16px")
+        .ease(d3.easeCubicInOut) 
+        // positioning
+        .attr("y", function (d) {
+          return (d3.max(data, function (d) { return d.Sales; }) * (myHeight / d3.max(data, function (d) { return d.Sales; })) + 20) - d.Sales * (myHeight / d3.max(data, function (d) { return d.Sales; }))  
+        })
+        // text style
+        .attr("fill", "black")
+        // text content
+        .text(function (d) {
+          return d.Sales; // Sales from csv file + unicode degree symbol 
+        })
+
+        // transition state one 
+        .transition()
+        .duration(4000)
+        .delay(function (d, i) {
+          return 200 + (4000 * speedFactor - (0 * 500));
+        })
+        .attr("font-size", "10px")
+        .attr(d3.easeExpOut); // animation effect
+
+
+      // --- --- ---
+      // LABELS 2 - time periods
+
+      // add label text for Bar Chart, using values from imported file - .data(data)
+      //var mylabel = svgContainer.selectAll('text').data(data);
+
+      // enter loops through
+      mylabel.enter().append("text")
+
+        // transition state zero (initial)
+        .transition()
+        .duration(10 * speedFactor)
+        .delay(2000)
+        // positioning
+        .attr("x", function (d, i) {
+          return (leftOffset + 0.5 * myWidth / dataCount) + (i * (myWidth / dataCount + gap)); // (50+20) to centre text in the middle of the bar; width of rectangle (40) + 2 for gap between them
+        })
+        .attr("y", 0.94 * myHeight)
+        // text style
+        .attr("text-anchor", "middle")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "10px")
+        .attr("fill", chartColour)
+        // text content
+        .text(function (d) {
+          return d.Year; // time period from csv file
+        })
+
+        // transition state two
+        .transition()
+        .duration(4000 * speedFactor)
+        .delay(function (d, i) {
+          return 500 * speedFactor + (200 * speedFactor + (i * 100));
+        })
+        .ease(d3.easeBounceOut) // animation effect
+        // Vertical positioning
+        .attr("y", function (d) {
+          return (d3.max(data, function (d) { return d.Sales; }) * (myHeight / d3.max(data, function (d) { return d.Sales; })) + 30) - d.Sales * (myHeight / d3.max(data, function (d) { return d.Sales; }))  // baseline from top + 20px into the bar, minus (i.e. going up) the height of the rect
+        })
+        .attr("fill", "#fd7")
+
+        // transition state three
+        .transition()
+        .duration(2000)
+        .delay(2000 + (1000 * 0.5 * speedFactor))
+        .attr("fill", chartColour)
+        .attr("font-size", "0px")
+        .remove()
+        .ease(d3.easeLinear); // animation effect
+
+
+      // --- --- ---
+      // AXES rendering
+
+      svgContainer.append("g") // 'g' denotes group
+        .attr("transform", "translate(50," + myHeight + ")") // note that height is inside quote marks - it is a text that need to be concatinated!
+        .call(xAxis)
+        // apply the below to all text elements
+        .selectAll("text")
+        .attr("transform", "rotate(-60)")
+        .attr("text-anchor", "end")
+        .attr("x", "-8") // by trial and error
+        .attr("y", "8");
+
+      svgContainer.append("g") // 'g' denotes group
+        .attr("transform", "translate(" + (leftOffset - 0.5 * gap) + ", 0)")
+        .call(yAxis);
+
+
+    });
+
+} 
 </script>
