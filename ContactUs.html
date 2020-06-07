@@ -1,4 +1,7 @@
-<!-- ContactUs.html-->
+	<!-- Web Application Development - Project, GMIT 2020 -->
+	<!-- Karolina Szafran-Belzowska, G00376368@gmit.ie -->
+	<!-- Lecturer: dr. Michael Duignan -->
+	
 <!DOCTYPE html>
  <!-- Document type declaration that identifies this document as the HTML document-->
 <html>
@@ -10,8 +13,18 @@
 	<!-- set the title of my HTML-->
 	<title>The Greenhouse Organics</title>
 </head>
-	<style type = "text/css"> <!--The style attribute specifies an inline style for an element. The attribute is used with the HTML <body> tag, with the CSS property which describes how HTML elements are to be displayed on screen-->
+	<style type = "text/css"> 
+	<!--The style attribute specifies an inline style for an element. The attribute is used with the HTML <body> tag, with the CSS property which describes how HTML elements are to be displayed on screen-->
 	<!-- I used class selectors (".") and  ID selectors ("#"). The difference between an ID and a class is that an ID can be used to identify one element, whereas a class can be used to identify more than one.-->
+	
+	<!-- The font-size defines the size of the font and it is relative to the parent element's font size -->
+	<!-- The font-family specifies the font for an element, -->
+	<!-- The background-color property sets the background color of elements in my HTML -->
+	<!-- The padding is the space between its content and its border.-->
+	<!-- The text-align property specifies the horizontal alignment of text in an element.-->
+	<!-- The overflow property specifies what should happen if content overflows an element's box -->
+	<!-- The margin property sets the margins for an element, and is a shorthand property for the following properties: top, right. bottom and left.-->
+	<!-- The border property is a shorthand property for: width, style and color. -->
 	body{ 
 		background-color:LightGreen;
 		}
@@ -165,7 +178,7 @@
 		margin-left: 2px;
 		height:20px;
 		}
-	.error{
+	.error{ <!-- message appears when you not enter your title -->
 		color: red;
 		font-size: 11px;
 		padding-left: 5px;
@@ -217,6 +230,11 @@
 		font-weight: bold;
 		cursor: pointer;
 		}
+	.hidden{
+		display:none
+		}
+	
+	
 	</style>
 	<body id="SignIn"> <!-- <body> tag defines the main content of the HTML document -->
 		<h1 class="d1">The Greenhouse Organics</h1>
@@ -234,16 +252,17 @@
 			<a href="Vegetables.html">Vegetable Boxes</a>
 			<a href="Fruits.html">Fruit Boxes</a>
 			<a href="AboutUs.html">About Us</a>
-			<a href="Shopping.html">Shopping with Us in 2019</a>
+			<a href="Shopping.html">Shopping in 2019</a>
 			<a href="Sales.html">Sales</a>
 			<a href="ContactUs.html">Contact Us</a>
 			<a href="SignIn.html" class="right">SignIn</a>
 		</div> 
 		
+		<form id = "contact" class = "section line">
 		<div id="content">
 			<div id="headerDirect" style="margin-left:45px;">
 			<br>
-			<br>
+			
 			<b>
 			Please complete
 			<br>
@@ -253,68 +272,36 @@
 			<div id="title">
 				<h3>Contact Us</h3>
 			</div>
+			</div>
 		</div>
 		<div id="form">
-			<form id="contact">
-				<div class="section line">
-					<div class="label left">
-						Title
-					</div>
-					<div class="section_input left">
-						<select id="title_options" name="title">
+				
+	
+      <!--Add the elements for the form-->
+		<b class="label left">Title</b><br>
+		<select id="title_options" name="title">
 							<option value="XX">please select</option>
 							<option value="Mr">Mr</option>
 							<option value="Mrs">Mrs</option>
 							<option value="Miss">Miss</option> 
-						</select>
-					</div>	
-				</div>
-				
-				<p>
-						<label for="loginID" class="label left">
-								First name:
-						</label>
-							
-						<input id="fname" style="margin-top:3px;margin:3px" required/> <br>		
-				</p>
-				
-				<p>
-						<label for="loginID" class="label left">
-								Surname:
-						</label>
-							
-						<input id="lname" style="margin-top:3px;margin:3px" required/><br>		
-				</p>
-				
-				<p>
-						<label for="loginID" class="label left">
-								Contact phone number:
-						</label>
-							
-						<input id="phone"type="text" style="margin-top:3px;margin:3px" required/><br>		
-				</p>
-				
-				<p>
-						<label for="loginID" class="label left">
-								Email address:
-						</label>
-							
-						<input id="email"type="email" style="margin-top:3px;margin:3px" required/><br>		
-				</p>
-				
-				
-				<p>
-						<label for="loginID" class="label left">
-						Is this query regarding an order you have already placed?
-						</label>
-						<!-- Type = "radio" buttons let a user select only one of a limited number of choices, here - yes or no-->	
-						<input class="select" type="radio" name="post" value="yes">
+		</select><br>
+        <b class="label left">First Name:</b> <br>
+        <input id="fname" style="margin-top:6px;margin:6px" required/> <br>
+        <b class="label left">Surname:</b><br>
+        <input id="lname" style="margin-top:6px;margin:6px" required/><br>
+        <b class="label left">Email Address:</b><br>
+        <input id="email" type="email" style="margin-top:6px;margin:6px" required/><br>
+        <b class="label left">Contact Phone Number:</b><br>
+        <input id="phone"type="text" length="16" style="margin-top:6px;margin:6px" required/><br>
+		<b class ="label left">Is this query regarding an order you have already placed?</b><br>
+		<!-- Type = "radio" buttons let a user select only one of a limited number of choices, here - yes or no-->
+		<input class="select" type="radio" name="post" value="yes">
 						yes 
-						<input class="select" type="radio" name="post" value="no">
-						no	
-				</p>
+		<input class="select" type="radio" name="post" value="no">
+						no
+		
 				
-				<div id="additional_info">
+		<div id="additional_info">
 					<div class="section_header">
 						Please provide details of your query
 					</div>
@@ -322,19 +309,22 @@
 					<div class="section_input">
 						<textarea id="additional_text" name="additional_info"></textarea>
 					</div>
-				</div>
+		</div>
 				
-				<p>
-					<!-- type = "submit" defines a submit button and "onclick" executes a JavaScript when a button is clicked -->		
-					<input id="button" type="submit" onclick="send()" value="Send form" style="margin-left: 400px">  
-							
-				</p>
-				
-			</form>
+		
+		<!-- type = "submit" defines a submit button and "onclick" executes a JavaScript when a button is clicked -->		
+		<input id="button" type="submit" onclick="send()" value="Send form" style="margin-left: 400px margin-bottom:400px">  <br>
+								
+		</form>
+		</div>
 			
 		</div>
 		
-	</body>
+	
+	</div> 
+	
+	<body>
+	
 <script>
 <!-- JavaScript function will execute the code -->
 function send(){
@@ -348,4 +338,5 @@ function send(){
   alert("Your enquiry has been successfully sent")
 }
 </script>
+
 </html>
